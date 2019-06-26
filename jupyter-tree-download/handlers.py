@@ -1,8 +1,6 @@
-# vim: set et sw=4:
-import subprocess
+import asyncio
 
-from tornado import concurrent, gen, web
-import tornado.ioloop
+from tornado import web
 
 from traitlets import Unicode
 from traitlets.config.configurable import Configurable
@@ -40,8 +38,7 @@ class TreeDownloadHandler(IPythonHandler):
         self.c = TreeDownload(config=self.config)
 
     @web.authenticated
-    @gen.coroutine
-    def get(self):
+    async def get(self):
         '''Accepts arguments:
              name: a hint for the downloaded filename,
              path: path to the directory to download,
@@ -65,31 +62,12 @@ class TreeDownloadHandler(IPythonHandler):
         )
 
         cmd = command(compression, path)
-        self.log.info(f'tree-download: {cmd}')
-        self.handle_command_pipe(cmd)
-
-        yield concurrent.Future()
-
-    def handle_command_pipe(self, cmd):
-        '''Pipe a command to a read event handler.'''
-        # Via https://gist.github.com/saniaxxx/4a45ccc5e9a90101de64
-        ioloop = tornado.ioloop.IOLoop.instance()
-        pipe = subprocess.Popen(cmd, stdout=subprocess.PIPE, close_fds=True)
-        pipe_fd = pipe.stdout.fileno()
-
-        def pipe_to_write(*args):
-            '''Write data from our pipe.
-               Called with fd and an events constant.'''
-            data = pipe.stdout.readline()
-            if data:
-                self.write(data)
-                self.flush()
-            elif pipe.poll() is not None:
-                ioloop.remove_handler(pipe_fd)
-                self.finish()
-
-        # call pipe_to_write when pipe_fd gets a read I/O event
-        ioloop.add_handler(pipe_fd, pipe_to_write, ioloop.READ)
+        p = await asyncio.create_subprocess_exec(*cmd,
+            stdout=asyncio.subprocess.PIPE)
+        async for line in p.stdout:
+            self.write(line)
+        await p.wait()
+        self.finish()
 
 class TreeDownload(Configurable):
     compression = Unicode(u"gzip", help="Compression type.", config=True)
