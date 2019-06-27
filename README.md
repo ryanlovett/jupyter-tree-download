@@ -1,8 +1,22 @@
 # jupyter-tree-download
-jupyter-tree-download provides a button to compress and download a jupyter server folder. The file is streamed so that it doesn't occupy additional memory or disk space on the server. Originally based on nbzip.
+jupyter-tree-download contains:
 
-Requires executables for either `zip` or `tar`. The latter can compress the download if `gzip`, `bzip2`, or other compression utilities are available.
-![demo](doc/demo.gif)
+ - a jupyter server extension that can bundle and compress a directory with zip or tar.
+ - a notebook extension that provides a download button in the tree view
+
+![demo](doc/notebook-button.png)
+
+The download is streamed so that it doesn't occupy additional memory or disk
+space in the server. Originally based on [nbzip](https://github.com/data-8/nbzip).
+
+Requires either `zip` or `tar` executables. The latter can compress the
+download if `gzip`, `bzip2`, or other compression utilities are available.
+
+You can configure the compression type by setting `c.TreeDownload.compression`
+in a jupyter_notebook_config.py in one of the config paths from `jupyter
+--paths`. The default is "gzip" though you can specify "bzip2", "xz", or any
+other compression supported by tar. Alternatively "zip" will create a zip
+archive.
 
 # Installation
 
