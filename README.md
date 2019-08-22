@@ -21,13 +21,7 @@ archive.
 # Installation
 
 ```
-pip install jupyter-tree-download
+pip install git+https://github.com/ryanlovett/jupyter-tree-download.git
 ```
 
-Then enable the jupyter server and notebook extensions.
-
-```
-jupyter serverextension enable --py jupyter-tree-download --sys-prefix
-jupyter nbextension    install --py jupyter-tree-download --sys-prefix
-jupyter nbextension     enable --py jupyter-tree-download
-```
+The notebook and notebook server extensions are installed automatically.
