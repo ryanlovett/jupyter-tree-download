@@ -13,15 +13,15 @@ setuptools.setup(
         'notebook', 'pytest'
     ],
     package_data={'jupyter-tree-download': ['static/*']},
-    #data_files=[
-    #    ('share/jupyter/nbextensions/jupyter-tree-download',
-    #        glob('jupyter-tree-download/static/*')),
-    #    ('etc/jupyter/jupyter_notebook_config.d',
-    #        ['jupyter-tree-download/etc/serverextension/jupyter-tree-download.json']),
-    #    ('etc/jupyter/nbconfig/notebook.d',
-    #        ['jupyter-tree-download/etc/nbconfig/jupyter-tree-download.json'])
-    #],
-    #include_package_data=True,
+    data_files=[
+        ('share/jupyter/nbextensions/jupyter_tree_download',
+            glob('jupyter_tree_download/static/*')),
+        ('etc/jupyter/jupyter_notebook_config.d',
+            ['jupyter_tree_download/etc/serverextension/jupyter-tree-download.json']),
+        ('etc/jupyter/nbconfig/tree.d',
+            ['jupyter_tree_download/etc/nbconfig/jupyter-tree-download.json'])
+    ],
+    include_package_data=True,
     classifiers=[
         'Development Status :: 4 - Beta',
         'License :: OSI Approved :: BSD License',

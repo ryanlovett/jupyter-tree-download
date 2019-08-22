@@ -1,5 +1,5 @@
 {
   "load_extensions": {
-     "jupyter-tree-download/tree": true
+     "jupyter_tree_download/tree": true
   }
 }
