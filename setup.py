@@ -5,7 +5,7 @@ setuptools.setup(
     name="jupyter-tree-download",
     version='0.1.0',
     url="https://github.com/ryanlovett/jupyter-tree-download",
-    author_email="Ryan Lovett",
+    author="Ryan Lovett",
     author_email="rylo@berkeley.edu",
     description="Compresses and downloads all files in any of the user's directories.",
     packages=setuptools.find_packages(),
