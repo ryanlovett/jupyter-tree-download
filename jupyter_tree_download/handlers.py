@@ -8,7 +8,7 @@ from traitlets.config.configurable import Configurable
 from notebook.base.handlers import IPythonHandler
 
 def attachment_suffix(compression):
-    '''Determines the conventional suffix of the compressed download.'''
+    '''Returns the conventional suffix of the compression type.'''
     if compression == 'zip':     return compression
     elif compression == 'gzip':  return 'tar.gz'
     elif compression == 'bzip2': return 'tar.bz2'

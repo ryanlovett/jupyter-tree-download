@@ -18,7 +18,8 @@ define([
 			console.log("dir_path: " + dir_path);
 
 			var baseUrl = document.location.origin + document.body.getAttribute('data-base-url');
-			/* we name the file based on what the client sees as the hostname */
+			/* we name the file based on what the client sees as the hostname
+             * because it is usually a jupyterhub */
 			var hostname = document.location.hostname;
             window.location.href = baseUrl + 'tree-download?name=' + hostname + '&path=' + dir_path;
           })
