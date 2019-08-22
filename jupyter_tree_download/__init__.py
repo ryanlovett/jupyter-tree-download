@@ -5,16 +5,16 @@ from .handlers import TreeDownloadHandler
 # Jupyter Extension points
 def _jupyter_server_extension_paths():
     return [{
-        'module': 'jupyter-tree-download',
+        'module': 'jupyter_tree_download',
     }]
 
 
 def _jupyter_nbextension_paths():
     return [{
         "section": "tree",
-        "dest": "jupyter-tree-download",
+        "dest": "jupyter_tree_download",
         "src": "static",
-        "require": "jupyter-tree-download/tree"
+        "require": "jupyter_tree_download/tree"
     }]
 
 
