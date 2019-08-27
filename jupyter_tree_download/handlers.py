@@ -44,6 +44,8 @@ class TreeDownloadHandler(IPythonHandler):
              path: path to the directory to download,
              compression: compression type, e.g. zip, gzip, bzip2, etc.
         '''
+        _buf_size = 65535
+
         name = self.get_argument('name')
         if name == '': name = 'tree'
 
@@ -64,8 +66,11 @@ class TreeDownloadHandler(IPythonHandler):
         cmd = command(compression, path)
         p = await asyncio.create_subprocess_exec(*cmd,
             stdout=asyncio.subprocess.PIPE)
-        async for line in p.stdout:
-            self.write(line)
+        while True:
+            data = await p.stdout.read(_buf_size)
+            if not data: break
+            self.write(data)
+            self.flush(data)
         await p.wait()
         self.finish()
 
