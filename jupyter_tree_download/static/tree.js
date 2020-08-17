@@ -6,8 +6,6 @@ define([
 ) {
 
     var load_ipython_extension = function () {
-        $(".col-sm-8.no-padding").attr('class', 'col-sm-4 no-padding');
-        $(".col-sm-4.no-padding.tree-buttons").attr('class', 'col-sm-8 no-padding tree-buttons');
 
         $('#notebook_toolbar .pull-right').prepend(
           $('<div>').addClass('btn-group').attr('id', 'tree-download').prepend(
