@@ -12,7 +12,7 @@ define([
 
         $('#notebook_toolbar .pull-right').prepend(
           $('<div>').addClass('btn-group').attr('id', 'tree-download').prepend(
-               '<button class="btn btn-xs btn-default" title="Download">Download</button>'
+               '<button class="btn btn-xs btn-default" title="Download Directory">Download Directory</button>'
           ).click(function() {
 			var dir_path = document.body.getAttribute('data-notebook-path');
 			console.log("dir_path: " + dir_path);
