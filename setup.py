@@ -10,7 +10,7 @@ setuptools.setup(
     description="Compresses and downloads all files in any of the user's directories.",
     packages=setuptools.find_packages(),
     install_requires=[
-        'notebook', 'pytest'
+        'notebook'
     ],
     package_data={'jupyter-tree-download': ['static/*']},
     data_files=[
