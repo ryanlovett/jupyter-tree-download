@@ -75,4 +75,15 @@ class TreeDownloadHandler(IPythonHandler):
         self.finish()
 
 class TreeDownload(Configurable):
-    compression = Unicode(u"gzip", help="Compression type.", config=True)
+    compression = Unicode(
+        "zip",
+        help="""Type of compression to use.
+
+        If 'zip' a .zip file is produced.
+        For anything else, a '.tar.{compression}' file is produced, via tar.
+
+        Appropriate compressor program (such as 'zip', 'tar', 'gzip', etc) must be
+        already installed in the environment
+        """,
+        config=True
+    )
