@@ -1,9 +1,8 @@
 define([
     'jquery',
     'base/js/utils',
-    'base/js/namespace'
 ], function (
-    $, utils, Jupyter
+    $, utils
 ) {
 
     var load_ipython_extension = function () {
@@ -14,14 +13,15 @@ define([
           $('<div>').addClass('btn-group').attr('id', 'tree-download').prepend(
                '<button class="btn btn-xs btn-default" title="Download">Download</button>'
           ).click(function() {
-			var dir_path = document.body.getAttribute('data-notebook-path');
-			console.log("dir_path: " + dir_path);
+            var dirPath = utils.get_body_data('notebookPath')
+			console.log("dir_path: " + dirPath);
 
-			var baseUrl = document.location.origin + document.body.getAttribute('data-base-url');
+            var baseUrl = utils.get_body_data('baseUrl')
+
 			/* we name the file based on what the client sees as the hostname
              * because it is usually a jupyterhub */
 			var hostname = document.location.hostname;
-            window.location.href = baseUrl + 'tree-download?name=' + hostname + '&path=' + dir_path;
+            window.location.href = baseUrl + 'tree-download?name=' + hostname + '&path=' + dirPath;
           })
         )
     };
