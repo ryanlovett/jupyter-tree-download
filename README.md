@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ryanlovett/jupyter-tree-download/master)
+
 # jupyter-tree-download
 jupyter-tree-download contains:
 
