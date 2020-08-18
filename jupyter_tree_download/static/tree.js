@@ -11,6 +11,9 @@ define([
           $('<div>').addClass('btn-group').attr('id', 'tree-download').prepend(
                '<button class="btn btn-xs btn-default" title="Download Directory">Download Directory</button>'
           ).click(function() {
+            // $('body').data() isn't updated when the user navigates
+            // from folder to folder using /tree, so the method below
+            // won't have the correct value.
             //var dirPath = utils.get_body_data('notebookPath')
             var dirPath = document.body.getAttribute('data-notebook-path');
             console.log("dir_path: " + dirPath);
