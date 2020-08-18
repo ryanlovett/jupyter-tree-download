@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="jupyter-tree-download",
-    version='0.1.0',
+    version='1.0',
     url="https://github.com/ryanlovett/jupyter-tree-download",
     author="Ryan Lovett",
     author_email="rylo@berkeley.edu",
