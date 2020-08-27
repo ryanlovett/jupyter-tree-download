@@ -11,14 +11,12 @@ jupyter-tree-download contains:
 The download is streamed so that it doesn't occupy additional memory or disk
 space in the server. Originally based on [nbzip](https://github.com/data-8/nbzip).
 
-Requires either `zip` or `tar` executables. The latter can compress the
-download if `gzip`, `bzip2`, or other compression utilities are available.
+Requires `zip` by default.
 
-You can configure the compression type by setting `c.TreeDownload.compression`
+You can change the compression type by setting `c.TreeDownload.compression`
 in a jupyter_notebook_config.py in one of the config paths from `jupyter
---paths`. The default is "gzip" though you can specify "bzip2", "xz", or any
-other compression supported by tar. Alternatively "zip" will create a zip
-archive.
+--paths`. If you specify "gzip", "bzip2", "xz", or any other compression
+supported by tar, you will need that executable plus `tar` to be installed.
 
 # Installation
 
