@@ -21,7 +21,7 @@ supported by tar, you will need that executable plus `tar` to be installed.
 # Installation
 
 ```
-pip install git+https://github.com/ryanlovett/jupyter-tree-download.git
+pip install jupyter-tree-download
 ```
 
 The notebook and notebook server extensions are installed automatically.
