@@ -13,10 +13,10 @@ space in the server. Originally based on [nbzip](https://github.com/data-8/nbzip
 
 Requires `zip` by default.
 
-You can change the compression type by setting `c.TreeDownload.compression`
+You can configure the compression type by setting `c.TreeDownload.compression`
 in a jupyter_notebook_config.py in one of the config paths from `jupyter
---paths`. If you specify "gzip", "bzip2", "xz", or any other compression
-supported by tar, you will need that executable plus `tar` to be installed.
+--paths`. If you specify `gzip`, `bzip2`, `xz`, or any other compression
+supported by `tar`, you will need to install that executable plus `tar`.
 
 # Installation
 
